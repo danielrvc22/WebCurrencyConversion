@@ -1,0 +1,69 @@
+<div class="container">
+    <h2>Conversor de Moneda</h2>
+    <form (ngSubmit)="convertCurrency()">
+      <div>
+        <label for="from">Moneda Origen:</label>
+        <input type="text" id="from" [(ngModel)]="fromCurrency" name="from" required>
+      </div>
+      <div>
+        <label for="to">Moneda Destino:</label>
+        <input type="text" id="to" [(ngModel)]="toCurrency" name="to" required>
+      </div>
+      <div>
+        <label for="amount">Monto:</label>
+        <input type="number" id="amount" [(ngModel)]="amount" name="amount" required>
+      </div>
+      <button type="submit">Convertir</button>
+    </form>
+  
+
+    <div     *ngIf="conversionResult" class="container mt-5 d-flex justify-content-center">
+        <div class="card shadow-lg p-4 border-0" style="max-width: 500px;">
+          <div class="card-body">
+            <!-- Título -->
+            <h3 class="card-title text-center mb-4 text-primary">
+              <i class="fas fa-exchange-alt me-2"></i>
+              Resultado de Conversión
+            </h3>
+      
+            <!-- Contenido -->
+            <div class="mb-3">
+              <div class="d-flex justify-content-between align-items-center">
+                <span><strong>Moneda Origen:</strong></span>
+                <span class="text-muted">{{ conversionResult.currencyOrigin || 'N/A' }}</span>
+              </div>
+            </div>
+      
+            <div class="mb-3">
+              <div class="d-flex justify-content-between align-items-center">
+                <span><strong>Moneda Destino:</strong></span>
+                <span class="text-muted">{{ conversionResult.currencyTarget || 'N/A' }}</span>
+              </div>
+            </div>
+      
+            <div class="mb-3">
+              <div class="d-flex justify-content-between align-items-center">
+                <span><strong>Monto:</strong></span>
+                <span class="text-muted">{{ conversionResult.amount || '0' }}</span>
+              </div>
+            </div>
+      
+            <div class="mb-3">
+              <div class="d-flex justify-content-between align-items-center">
+                <span><strong>Valor de Tipo de Cambio:</strong></span>
+                <span class="text-success">{{ conversionResult.conversionValue || '0.0' }}</span>
+              </div>
+            </div>
+      
+            <div>
+              <div class="d-flex justify-content-between align-items-center">
+                <span><strong>Monto Convertido:</strong></span>
+                <span class="text-success fw-bold">{{ conversionResult.amountConversion || '0.0' }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+
+        
